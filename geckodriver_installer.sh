@@ -5,17 +5,17 @@
 
 self_test() {
     if [ -z "$TAG_NUMBER" ]; then
-        echo "No release tag number has been set, use -help | -h to see how to define this parameter.";
+        echo "No release tag number has been set, use --help | -h to see how to define this parameter.";
         exit 1
     fi
 
     if [ -z "$PLATFORM" ]; then
-        echo "No arch/platform has been set, use -help | -h to see how to define this parameter.";
+        echo "No arch/platform has been set, use --help | -h to see how to define this parameter.";
         exit 1
     fi
 
     if [ $PLATFORM -ne "linux32" ] && [ $PLATFORM -ne "linux64" ] && [ $PLATFORM -ne "macos" ] && [ $PLATFORM -ne "macos-aarch64" ]; then
-        echo "Arch '$PLATFORM' is not supported, use -help | -h to see the valid architetures supported.";
+        echo "Arch '$PLATFORM' is not supported, use --help | -h to see the valid architetures supported.";
         exit 1
     fi
 
@@ -23,7 +23,7 @@ self_test() {
 }
 
 if [ $# -eq 0 ]; then
-    echo "No parameters have been specified, use -help | -h to see the valid parameters. Usage:\n    sudo ./geckodriver_installer.sh [-h | --help] [-v | --version] [-a | --arch arch_name] [-t | --tag tag_number]";
+    echo "No parameters have been specified, use --help | -h to see the valid parameters. Usage:\n    sudo ./geckodriver_installer.sh [-h | --help] [-v | --version] [-a | --arch arch_name] [-t | --tag tag_number]";
     exit 1
 fi
 
@@ -55,13 +55,13 @@ while [ $# -gt 0 ]; do
             ;;
         --help | -h)
             echo "Geckodriver Autoinstaller's Help Guide"
-            echo "    -tag | -t :: Set the release tag number for the desired version of geckodriver. See: https://github.com/mozilla/geckodriver/releases".
-            echo "    -arch | -a :: Set the architeture/platform version of geckodriver. The current supported versions are: linux32, linux64, macos, macos-aarch64."
-            echo "    -version | -v :: Prints the current version of this shell script."
+            echo "    --tag | -t :: Set the release tag number for the desired version of geckodriver. See: https://github.com/mozilla/geckodriver/releases".
+            echo "    --arch | -a :: Set the architeture/platform version of geckodriver. The current supported versions are: linux32, linux64, macos, macos-aarch64."
+            echo "    --version | -v :: Prints the current version of this shell script."
             exit 1
             ;;
         -*|--*) 
-            echo "$0: Parameter '$1' invalid, use -help | -h to see the valid parameters. Usage:\n    sudo ./geckodriver_installer.sh [-h | --help] [-v | --version] [-a | --arch arch_name] [-t | --tag tag_number]";
+            echo "$0: Parameter '$1' invalid, use --help | -h to see the valid parameters. Usage:\n    sudo ./geckodriver_installer.sh [-h | --help] [-v | --version] [-a | --arch arch_name] [-t | --tag tag_number]";
             exit 1
             ;;
         *)
